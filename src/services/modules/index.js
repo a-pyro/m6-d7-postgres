@@ -3,6 +3,7 @@ const Model = require('../../db/Model');
 const db = require('../../db');
 const Modules = new Model('modules');
 const StudentModules = new Model('student_modules');
+const TutorModules = new Model('tutor_modules');
 
 route.get('/', async (req, res, next) => {
   try {
@@ -98,6 +99,18 @@ route.delete('/:id', async (req, res, next) => {
     const response = await Modules.findByIdAndDelete({
       name: 'module_id',
       value: req.params.id,
+    });
+    res.send(response);
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+});
+
+route.post('/:moduleId/tutor/:tutorId', async (req, res, next) => {
+  try {
+    const response = await TutorModules.create({
+      module_id: req.params.moduleId,
+      tutor_id: req.params.tutorId,
     });
     res.send(response);
   } catch (error) {

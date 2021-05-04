@@ -11,6 +11,8 @@ CREATE TABLE
             student_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
             name VARCHAR ( 50 ) NOT NULL,
             lastname VARCHAR ( 50 ) NOT NULL,
+            country VARCHAR ( 50 ) NOT NULL,
+            preferred_role VARCHAR ( 50 ) NOT NULL,
             created_at TIMESTAMPTZ NOT NULL DEFAULT NOW() 
 );
 
